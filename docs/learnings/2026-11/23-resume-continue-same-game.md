@@ -1,3 +1,0 @@
-# Resume and Continue showed the same game (2026-11-23)
-
-The title menu's Resume returns to the game held in memory; Continue loads the newest autosave from the browser. After leaving a game for the menu, both pointed at the same game, and the autosave's subtitle said "Player 1" (the seat's default name). The open game's campaign id (`currentCampaign()` in `app/src/store.ts`) matches the autosave record's `campaign` when they are the same game, which is how the menu now hides Continue. An online guest's game (remote client) never counts as the autosaved game. Autosave records carry the human players' factions (`record.faction`, absent in older saves), which the menu now shows instead of player names.

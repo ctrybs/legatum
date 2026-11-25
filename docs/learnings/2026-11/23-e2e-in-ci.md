@@ -1,3 +1,0 @@
-# Browser tests run in CI (2026-11-23)
-
-Until now CI ran only vitest, so Playwright specs drifted from the app unseen (autosaves moved to IndexedDB, the Age score check, the site's CSP: see 23-e2e-autosave-reads-database.md). Now `ci.yml` has `e2e-smoke` (game, exit-to-title, turn-flow and contrast specs on a site built for the local relay, with the real relay under wrangler dev), required through `ci-ok`, and `e2e-nightly.yml` runs the whole suite in four shards every night on master and on demand. Failure artifacts are `app/test-results`. Adding a spec to the smoke list costs every PR its run time; keep the smoke set to the core loop.

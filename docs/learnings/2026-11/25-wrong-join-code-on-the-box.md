@@ -1,3 +1,0 @@
-# A refused join code is shown on the code box, not as the screen's notice (2026-11-25)
-
-Two clients receive the host's `wrong_join_code`: the game socket (`remote.ts`, Join screen) and the room socket (`staging.ts`, game room). Both store handlers in `store.ts` now record the refused text in `joinCodeRejected` and leave `error` empty; `JoinCodeField` shows the red hint while the typed text still equals it. A new path that can receive this code must do the same, or the player sees the old generic notice above the seats again. The fifth wrong code also closes the connection (`too_many_codes`), but the `wrong_join_code` error arrives first, so the box still says why.

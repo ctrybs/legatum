@@ -1,2 +1,0 @@
-196 image derivatives decoded and dimension-checked
-PASS

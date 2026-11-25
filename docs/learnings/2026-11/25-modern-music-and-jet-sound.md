@@ -1,9 +1,0 @@
-# Modern-era music and a jet sound, and what still has no source (2026-11-25)
-
-- **A game's "community soundtrack" can have a different licence from its original one.** Warzone 2100's original soundtrack is GPL, but the Legacy and Aftermath albums by LupusMechanicus in Ubuntu's `warzone2100-music` package each carry a `license.txt` that says CC BY-SA 3.0. Read the per-album licence, not the package summary.
-- **A track's mood limits its eras.** The Warzone music is electronic and dark, so it plays in the Modern and Future eras only (manifest `eras: [8, 9]`), and the age-of-sail music now stops at the World War era (`[4, 7]`). The Machine Age and the World War era still have no music of their own.
-- **Long tracks are cut, not shipped whole.** The albums' tracks run 5 to 9 minutes; each is cut to its first 240 s with a 6 s fade, which keeps the six files near 17 MB together.
-- **Dead ends, so nobody repeats them:** MegaGlest (nothing later than the Renaissance), Bos Wars and Advanced Strategic Command's music (GPL), FreeCol's and Wesnoth's sound effects (GPL). No CC-licensed musket, drone or Mesoamerican music is reachable from a cloud session (Freesound, OpenGameArt and incompetech are blocked).
-- **The Fighter is a propeller aircraft.** PR 146 limited the propeller recording to the Biplane and the Bomber and left the Fighter silent by mistake. `battleSound.ts` now names the propeller set and treats every other aircraft as a jet.
-- **A per-file gain can push a peak over full scale.** Six 0 A.D. battle sounds had a manifest `gain` that lifted their true peak to as much as +2 dBTP (the files peak near -2 dBTP and the gain was up to 1.6). `import_0ad.py` now caps the gain so the peak stays at or under -1 dBTP. Check peak plus gain, not the file alone.
-- **Nobody has listened to the mix.** Every level is a measurement (table in `docs/design/sound-sources.md`). The mix needs a person's ear before it is called balanced.

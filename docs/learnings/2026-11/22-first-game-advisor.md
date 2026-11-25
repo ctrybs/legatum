@@ -1,5 +1,0 @@
-## 2026-11-22: First-game onboarding and the in-game advisor
-
-- **Right-click is invisible to non-gamers.** A first-time, non-gamer player could not find right-click to move, founding a city or choosing research, even with the turn-one hints on: the hints said *what* to decide, never *which control* does it. On a Mac trackpad "right-click" is a two-finger click, which a non-gamer won't guess. The fix is the in-game advisor (exact control per step, ring on the target), and `tools/gates/check.py` now names `legatum-advisor-reviewer` when a branch changes the controls or rules the advisor teaches (`ADVISOR_IMPACT`).
-- **TypeScript on the case-insensitive Mac cannot pair `advisor.ts` with `Advisor.tsx`.** Imports of `./Advisor` resolve to the logic file and report a casing conflict. The logic lives in `advisorModel.ts`, with the component in `Advisor.tsx`.
-- **A modal dialog enters the browser's top layer.** A card or ring left in the game tree sits behind the Research dialog even with a higher z-index. The advisor portals its one card and ring into the open dialog while pointing to a technology.

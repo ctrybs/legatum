@@ -1,7 +1,0 @@
-# Browser tests read autosaves from the database, not localStorage (2026-11-23)
-
-Autosaves moved from the single `legatum.autosave.v1` localStorage slot to the browser database (`legatum-autosave-v1`, `app/src/platform/autosaveStore.ts`). Tests that read `localStorage.getItem('legatum.autosave.v1')` after a turn got `null`, so "Autosave: reload and Continue", auto-explore, turn-flow and training-lobby failed although the game saved fine. Read the newest save with `newestAutosave` / `newestGameState` in `app/e2e/autosave.ts`. Seeding the old slot in an init script still works: the game copies it into the database on first read. These Playwright specs are not part of CI (`app-test` is vitest only), so they rot silently; run the ones near a change before pushing it.
-
-Two more rotted helpers fixed at the same time: `dismissInterstitials` now closes the Age takeover and score check (they cover the turn dock), and the turn report's heading is "Turn report", not "What happened". The sidebar's quiet This Turn hides its city list, so a city is reached from Cities in the top bar.
-
-Also from the same sweep: the contrast audit (`app/e2e/contrast.ts`) decoded screenshots with `fetch('data:…')`, which the built site's CSP (`connect-src`) refuses; it now decodes with `atob`. And the e2e relay (`wrangler dev`, one per run) kept earlier tests' rooms open, so the second online co-op test hit the 2-rooms-per-address cap; the fixture starts it with `--var MAX_ROOMS_PER_IP:50` (the cap's message is tested with mocked replies).

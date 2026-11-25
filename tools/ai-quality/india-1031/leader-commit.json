@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "name": "leader-commit",
-  "faction_overrides": {
-    "India": {
-      "leader_commit": 2
-    }
-  }
-}
